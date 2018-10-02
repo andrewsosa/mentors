@@ -1,0 +1,10 @@
+{
+  "name": "mentors",
+  "version": "0.0.1",
+  "description": "Mentoring app for Hackathons!",
+  "author": "Andrew Sosa <andrew@andrewsosa.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^7.0.1"
+  }
+}
