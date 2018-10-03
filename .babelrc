@@ -9,7 +9,8 @@
       "root": ["."],
       "alias": {
         "pages": "./pages",
-        "components": "./components"
+        "components": "./components",
+        "styles": "./styles",
       }
     }]
   ]

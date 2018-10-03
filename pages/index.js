@@ -1,6 +1,8 @@
 import React from 'react';
-import App from 'components/App';
+import Dashboard from 'components/dashboard';
+
+import 'styles/bulma.sass';
 
 export default () => (
-  <App />
+  <Dashboard />
 );

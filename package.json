@@ -10,9 +10,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
+    "bloomer": "^0.6.3",
+    "bulma": "^0.7.1",
     "eslint-plugin-babel": "^5.2.1",
     "next": "^7.0.1",
+    "node-sass": "^4.9.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
@@ -20,12 +24,11 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.3"
+    "eslint-plugin-react": "^7.11.1"
   }
 }
