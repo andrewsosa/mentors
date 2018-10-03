@@ -12,13 +12,16 @@
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-styled-components": "^1.8.0",
     "bloomer": "^0.6.3",
     "bulma": "^0.7.1",
     "eslint-plugin-babel": "^5.2.1",
     "next": "^7.0.1",
     "node-sass": "^4.9.3",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "redux-zero": "^4.14.0",
+    "styled-components": "^3.4.9"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

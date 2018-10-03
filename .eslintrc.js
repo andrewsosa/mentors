@@ -5,6 +5,7 @@ module.exports = {
   ],
 
   "rules": {
+    "no-unused-vars": "warn",
     "react/display-name": "off",
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
