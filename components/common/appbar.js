@@ -5,11 +5,13 @@ import {
   NavbarItem, Container,
 } from 'bloomer';
 
+import './appbar.sass';
+
 const Appbar = () => (
-  <Navbar>
+  <Navbar id="appbar">
     <Container>
       <NavbarBrand>
-        <NavbarItem>hackOverflow</NavbarItem>
+        <NavbarItem href="#">hackOverflow</NavbarItem>
       </NavbarBrand>
       <NavbarStart>
         <NavbarItem href="#">QUEUE</NavbarItem>

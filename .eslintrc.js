@@ -9,6 +9,7 @@ module.exports = {
     "react/display-name": "off",
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
+    "react/prefer-stateless-function": "off",
   },
 
   "plugins": [
