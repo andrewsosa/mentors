@@ -5,7 +5,7 @@ import {
   NavbarItem, Container,
 } from 'bloomer';
 
-import './appbar.sass';
+import './Appbar.sass';
 
 const Appbar = () => (
   <Navbar id="appbar">

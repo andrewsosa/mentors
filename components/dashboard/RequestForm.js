@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'redux-zero/react';
+
 // import Select from '@atlaskit/select';
 import Button from '@atlaskit/button';
 import FieldText from '@atlaskit/field-text';
@@ -22,7 +24,7 @@ const RequestForm = () => (
       // }}
       // action="//httpbin.org/get"
       // method="GET"
-      target="submitFrame"
+      // target="submitFrame"
     >
       <FormHeader title="Request a mentor?" />
 
@@ -30,7 +32,7 @@ const RequestForm = () => (
 
         <Field label="My name is ...">
           <FieldText
-            name="requestee_name"
+            name="requesteeName"
             placeholder="What should we call you?"
             isRequired
             shouldFitContainer
@@ -39,7 +41,7 @@ const RequestForm = () => (
 
         <Field label="I need help with ...">
           <FieldText
-            name="problem_statement"
+            name="problemStatement"
             placeholder="What do you need help with?"
             isRequired
             shouldFitContainer
@@ -48,7 +50,7 @@ const RequestForm = () => (
 
         <Field label="You can find me at ...">
           <FieldText
-            name="problem_statement"
+            name="location"
             placeholder="Where are you?"
             isRequired
             shouldFitContainer
@@ -87,5 +89,6 @@ const RequestForm = () => (
     </Form>
   </Box>
 );
+
 
 export default RequestForm;

@@ -5,6 +5,7 @@ module.exports = {
   ],
 
   "rules": {
+    "no-console": "off",
     "no-unused-vars": "warn",
     "react/display-name": "off",
     "react/jsx-filename-extension": "off",
@@ -16,6 +17,11 @@ module.exports = {
     "babel",
     "react",
   ],
+
+  // "env": {
+  //   "node": true,
+  //   "browser": true,
+  // }
 
   // "parserOptions": {
   //   "ecmaFeatures": {

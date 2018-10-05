@@ -11,6 +11,7 @@
         "pages": "./pages",
         "components": "./components",
         "styles": "./styles",
+        "store": "./store"
       }
     }],
     ["babel-plugin-styled-components", {
