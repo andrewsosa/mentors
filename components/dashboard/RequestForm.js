@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'redux-zero/react';
+import axios from 'axios';
 
 // import Select from '@atlaskit/select';
 import Button from '@atlaskit/button';
@@ -29,24 +30,28 @@ class RequestForm extends React.Component {
   }
 
   handleFormSubmit = (e) => {
-    console.log(e);
+    e.preventDefault();
+
+    const { name, topics, location } = this.state;
+    axios.post('/api/ticket', { name, topics, location })
+      .then((res) => {
+        console.log(res);
+        this.formRef.reset();
+      });
   }
 
   render() {
     const { name, topics, location } = this.state;
 
-    console.log(name);
     return (
       <Box id="requestForm">
         <Form
           name="create-ticket"
-          onSubmit={this.handleFormSubmit}
           // onReset={this.onResetHandler}
+          onSubmit={this.handleFormSubmit}
           ref={(form) => {
             this.formRef = form;
           }}
-          // action="//httpbin.org/get"
-          // method="GET"
           // target="submitFrame"
         >
           <FormHeader title="Request a mentor?" />
@@ -65,21 +70,21 @@ class RequestForm extends React.Component {
 
 
             <FieldTextStateless
-              label="I need help with ..."
-              name="problemStatement"
-              onChange={this.handleLocationChange}
-              placeholder="What do you need help with?"
-              value={location}
               isRequired
               shouldFitContainer
+              label="I need help with ..."
+              name="problemStatement"
+              placeholder="What do you need help with?"
             />
 
             <Field label="You can find me at ...">
               <FieldTextStateless
-                name="location"
-                placeholder="Where are you?"
                 isRequired
                 shouldFitContainer
+                name="location"
+                placeholder="Where are you?"
+                onChange={this.handleLocationChange}
+                value={location}
               />
             </Field>
 
@@ -99,14 +104,7 @@ class RequestForm extends React.Component {
 
           </FormSection>
 
-          <FormFooter
-            actionsContent={[
-              {
-                id: 'submit-button',
-              },
-              {},
-            ]}
-          >
+          <FormFooter actionsContent={[{ id: 'submit-button' }]}>
             <Button appearance="primary" type="submit">
               Get help!
             </Button>

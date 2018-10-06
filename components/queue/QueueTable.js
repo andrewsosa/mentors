@@ -1,16 +1,24 @@
 import React from 'react';
 import moment from 'moment';
 import openSocket from 'socket.io-client';
+import axios from 'axios';
 import { connect } from 'redux-zero/react';
 import { Table } from 'bloomer';
 import { actions } from 'store/tickets';
-
 import './QueueTable.sass';
 
 class QueueTable extends React.Component {
-  constructor(props) {
-    super(props);
+  componentWillMount() {
+    const { addTicket, clearTickets } = this.props;
+    axios.get('/api/ticket')
+      .then(res => res.data)
+      .then((tickets) => {
+        clearTickets();
+        tickets.map(addTicket);
+      });
+  }
 
+  componentDidMount() {
     const { addTicket } = this.props;
     const socket = openSocket('http://localhost:3000');
     socket.on('ticket', ticket => addTicket(ticket));
@@ -18,6 +26,7 @@ class QueueTable extends React.Component {
 
   render() {
     const { tickets } = this.props;
+
     return (
       <div id="queueTable">
         <Table>
@@ -32,9 +41,9 @@ class QueueTable extends React.Component {
           <tbody>
             {
               tickets.map(t => (
-                <tr key="dummy">
+                <tr key={t._id}>
                   <td>[ status ]</td>
-                  <td>{t.requesteeName}</td>
+                  <td>{t.name}</td>
                   <td>{t.problemStatement}</td>
                   <td>{moment(t.created).fromNow()}</td>
                 </tr>

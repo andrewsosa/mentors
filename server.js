@@ -22,7 +22,8 @@ const db = mongoose.connection;
 app.prepare().then(db.once('open', () => {
   // Middleware
   server.use(bodyParser.json());
-  server.use(logger('dev'));
+  server.use(bodyParser.urlencoded({ extended: false }));
+
   server.use((req, res, nxt) => { req.io = io; nxt(); });
 
   // Routes
