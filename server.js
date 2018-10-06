@@ -9,7 +9,7 @@ const logger = require('morgan');
 
 const server = express();
 const http = require('http').Server(server);
-// const io = require('socket.io')(http);
+const io = require('socket.io')(http);
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = app.getRequestHandler();
@@ -23,10 +23,10 @@ app.prepare().then(db.once('open', () => {
   // Middleware
   server.use(bodyParser.json());
   server.use(logger('dev'));
-  // server.use((req, res, nxt) => { req.io = io; nxt(); });
+  server.use((req, res, nxt) => { req.io = io; nxt(); });
 
   // Routes
-  // server.use('/api', api);
+  server.use('/api', api);
   server.use(handler);
 
   http.listen(3000, (err) => {

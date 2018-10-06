@@ -7,6 +7,7 @@ module.exports = {
   "rules": {
     "no-console": "off",
     "no-unused-vars": "warn",
+    "arrow-body-style": "off",
     "react/display-name": "off",
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",

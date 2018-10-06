@@ -3,7 +3,7 @@ import { connect } from 'redux-zero/react';
 
 // import Select from '@atlaskit/select';
 import Button from '@atlaskit/button';
-import FieldText from '@atlaskit/field-text';
+import { FieldTextStateless } from '@atlaskit/field-text';
 
 import Form, {
   Field, FormHeader, FormSection, FormFooter,
@@ -13,82 +13,109 @@ import { Box } from 'bloomer';
 
 import './RequestForm.sass';
 
-const RequestForm = () => (
-  <Box id="requestForm">
-    <Form
-      name="create-ticket"
-      // onSubmit={this.onSubmitHandler}
-      // onReset={this.onResetHandler}
-      // ref={(form) => {
-      //   this.formRef = form;
-      // }}
-      // action="//httpbin.org/get"
-      // method="GET"
-      // target="submitFrame"
-    >
-      <FormHeader title="Request a mentor?" />
+class RequestForm extends React.Component {
+  state = {
+    name: '',
+    topics: [],
+    location: '',
+  }
 
-      <FormSection styles={{ marginTop: 0 }}>
+  handleNameChange = (e) => {
+    this.setState({ name: e.target.value });
+  }
 
-        <Field label="My name is ...">
-          <FieldText
-            name="requesteeName"
-            placeholder="What should we call you?"
-            isRequired
-            shouldFitContainer
-          />
-        </Field>
+  handleLocationChange = (e) => {
+    this.setState({ location: e.target.value });
+  }
 
-        <Field label="I need help with ...">
-          <FieldText
-            name="problemStatement"
-            placeholder="What do you need help with?"
-            isRequired
-            shouldFitContainer
-          />
-        </Field>
+  handleFormSubmit = (e) => {
+    console.log(e);
+  }
 
-        <Field label="You can find me at ...">
-          <FieldText
-            name="location"
-            placeholder="Where are you?"
-            isRequired
-            shouldFitContainer
-          />
-        </Field>
+  render() {
+    const { name, topics, location } = this.state;
 
-        {/* <Field label="Some related topics:">
-          <Select
-            isSearchable
-            defaultValue={{ label: 'Atlassian', value: 'atlassian' }}
-            options={[
-              { label: 'Atlassian', value: 'atlassian' },
-              { label: 'Sean Curtis', value: 'scurtis' },
-              { label: 'Mike Gardiner', value: 'mg' },
-              { label: 'Charles Lee', value: 'clee' },
+    console.log(name);
+    return (
+      <Box id="requestForm">
+        <Form
+          name="create-ticket"
+          onSubmit={this.handleFormSubmit}
+          // onReset={this.onResetHandler}
+          ref={(form) => {
+            this.formRef = form;
+          }}
+          // action="//httpbin.org/get"
+          // method="GET"
+          // target="submitFrame"
+        >
+          <FormHeader title="Request a mentor?" />
+
+          <FormSection styles={{ marginTop: 0 }}>
+
+            <FieldTextStateless
+              label="My name is ..."
+              name="requesteeName"
+              onChange={this.handleNameChange}
+              placeholder="What should we call you?"
+              value={name}
+              isRequired
+              shouldFitContainer
+            />
+
+
+            <FieldTextStateless
+              label="I need help with ..."
+              name="problemStatement"
+              onChange={this.handleLocationChange}
+              placeholder="What do you need help with?"
+              value={location}
+              isRequired
+              shouldFitContainer
+            />
+
+            <Field label="You can find me at ...">
+              <FieldTextStateless
+                name="location"
+                placeholder="Where are you?"
+                isRequired
+                shouldFitContainer
+              />
+            </Field>
+
+            {/* <Field label="Some related topics:">
+              <Select
+                isSearchable
+                defaultValue={{ label: 'Atlassian', value: 'atlassian' }}
+                options={[
+                  { label: 'Atlassian', value: 'atlassian' },
+                  { label: 'Sean Curtis', value: 'scurtis' },
+                  { label: 'Mike Gardiner', value: 'mg' },
+                  { label: 'Charles Lee', value: 'clee' },
+                ]}
+                name="owner"
+              />
+            </Field> */}
+
+          </FormSection>
+
+          <FormFooter
+            actionsContent={[
+              {
+                id: 'submit-button',
+              },
+              {},
             ]}
-            name="owner"
-          />
-        </Field> */}
-
-      </FormSection>
-
-      <FormFooter
-        actionsContent={[
-          {
-            id: 'submit-button',
-          },
-          {},
-        ]}
-      >
-        <Button appearance="primary" type="submit">
-          Get help!
-        </Button>
-        {/* <Button appearance="subtle">Cancel</Button> */}
-      </FormFooter>
-    </Form>
-  </Box>
-);
+          >
+            <Button appearance="primary" type="submit">
+              Get help!
+            </Button>
+          </FormFooter>
+        </Form>
+      </Box>
+    );
+  }
+}
 
 
 export default RequestForm;

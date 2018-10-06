@@ -6,7 +6,7 @@
   "author": "Andrew Sosa <andrew@andrewsosa.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "nodemon",
     "build": "next build",
     "start": "next start"
   },
@@ -33,6 +33,8 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "redux-zero": "^4.14.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "styled-components": "^3.4.9"
   },
   "devDependencies": {

@@ -13,6 +13,6 @@ export const store = createStore({
 });
 
 export const actions = _store => ({
-  addTicket: (state, ticket) => ({ tickets: state.tickets.push(ticket) }),
+  addTicket: (state, ticket) => ({ tickets: state.tickets.concat([ticket]) }),
   // popTicket: (state, ticket) => {}
 });

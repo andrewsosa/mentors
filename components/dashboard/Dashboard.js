@@ -17,11 +17,11 @@ class Dashboard extends React.Component {
         <Appbar />
         <Section>
           <Container id="main">
-            <Columns>
+            <Columns isDesktop>
               <Column>
                 <RequestForm />
               </Column>
-              <Column isSize={8} className="is-hidden-mobile">
+              <Column isSize={{default: 12, desktop: 8}} className="is-hidden-mobile">
                 <QueueTable />
               </Column>
             </Columns>
