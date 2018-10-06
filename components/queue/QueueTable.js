@@ -10,7 +10,7 @@ import './QueueTable.sass';
 class QueueTable extends React.Component {
   componentWillMount() {
     const { addTicket, clearTickets } = this.props;
-    axios.get('/api/ticket')
+    axios.get('/api/tickets')
       .then(res => res.data)
       .then((tickets) => {
         clearTickets();

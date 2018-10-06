@@ -1,11 +1,17 @@
 const express = require('express');
 const logger = require('morgan');
-const tickets = require('./controllers/tickets');
 
 const router = express.Router();
+
+const tickets = require('./controllers/tickets');
+const topics = require('./controllers/topics');
+
 router.use(logger('dev'));
 
-router.post('/ticket', tickets.post);
-router.get('/ticket', tickets.get);
+router.get('/tickets', tickets.get);
+router.post('/tickets', tickets.post);
+
+router.get('/topics', topics.get);
+router.post('/topics', topics.post);
 
 module.exports = router;

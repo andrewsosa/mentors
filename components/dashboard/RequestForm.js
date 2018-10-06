@@ -33,7 +33,7 @@ class RequestForm extends React.Component {
     e.preventDefault();
 
     const { name, topics, location } = this.state;
-    axios.post('/api/ticket', { name, topics, location })
+    axios.post('/api/tickets', { name, topics, location })
       .then((res) => {
         console.log(res);
         this.formRef.reset();

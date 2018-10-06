@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const ticketSchema = new mongoose.Schema({
   name: String,
   created: { type: Date, default: Date.now },
