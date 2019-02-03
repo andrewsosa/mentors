@@ -1,11 +1,9 @@
 require('dotenv').config();
 
-const next = require('next');
 const express = require('express');
 const mongoose = require('mongoose');
 
 const bodyParser = require('body-parser');
-const logger = require('morgan');
 
 const server = express();
 const http = require('http').Server(server);
@@ -19,7 +17,7 @@ const api = require('./routes');
 mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 
-app.prepare().then(db.once('open', () => {
+db.once('open', () => {
   // Middleware
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
@@ -34,6 +32,6 @@ app.prepare().then(db.once('open', () => {
     if (err) throw err;
     console.log('Server ready on http://localhost:3000');
   });
-}));
+});
 
 db.on('error', console.error.bind(console, 'connection error:'));

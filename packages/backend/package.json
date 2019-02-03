@@ -1,5 +1,5 @@
 {
-  "name": "@hackoverflow/backend",
+  "name": "backend",
   "version": "0.0.1",
   "main": "server.js",
   "description": "Mentoring app for Hackathons!",
@@ -7,27 +7,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "build": "next build",
-    "start": "next start"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
-    "eslint-plugin-babel": "^5.2.1",
     "express": "^4.16.3",
+    "jest": "^24.0.0",
     "mongoose": "^5.3.1",
     "morgan": "^1.9.1",
     "socket.io": "^2.1.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-import-resolver-babel-module": "^4.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
   }
 }

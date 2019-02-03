@@ -1,0 +1,7 @@
+version: '3.5'
+services:
+  backend:
+    build: packages/backend
+    image: hackoverflow/backend
+    ports:
+      - "3000:3000"
