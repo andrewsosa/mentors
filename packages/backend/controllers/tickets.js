@@ -4,7 +4,7 @@ const Topic = require('../models/topic');
 module.exports = {
   post: (req, res) => {
     const ticket = new Ticket(req.body);
-    ticket.save((err) => {
+    ticket.save(err => {
       if (err) {
         console.log(err);
         return res.sendStatus(500);
@@ -13,7 +13,7 @@ module.exports = {
       // Add the topic if it isn't there
       const topics = ticket.topics || [];
 
-      topics.map(async (t) => {
+      topics.map(async t => {
         try {
           const topic = new Topic({ name: t });
           topic.save();

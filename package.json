@@ -4,18 +4,29 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-module-resolver": "^3.0.0-beta",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "eslint": "^5.6.1",
+    "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.0.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^24.0.0",
-    "lerna": "^3.10.7"
+    "jest-environment-node": "^24.0.0",
+    "lerna": "^3.10.7",
+    "prettier": "^1.16.4",
+    "supertest": "^3.4.2"
   },
   "dependencies": {
     "backend": "file:packages/backend",

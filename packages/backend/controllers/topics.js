@@ -9,7 +9,7 @@ module.exports = {
   },
   post: (req, res) => {
     const topic = new Topic(req.body);
-    topic.save((err) => {
+    topic.save(err => {
       if (err) return res.sendStatus(500);
       return res.sendStatus(201);
     });

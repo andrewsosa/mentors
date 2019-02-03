@@ -10,7 +10,6 @@ const ticketSchema = new mongoose.Schema({
   status: { type: String, default: ticketStatus.open },
 });
 
-
 const Ticket = mongoose.model('Ticket', ticketSchema);
 
 Ticket.ticketStatus = ticketStatus;
