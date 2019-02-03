@@ -5,6 +5,7 @@ import axios from 'axios';
 // import Select from '@atlaskit/select';
 import Button from '@atlaskit/button';
 import { FieldTextStateless } from '@atlaskit/field-text';
+import { CreatableSelect } from '@atlaskit/select';
 
 import Form, {
   Field, FormHeader, FormSection, FormFooter,
@@ -18,7 +19,14 @@ class RequestForm extends React.Component {
   state = {
     name: '',
     topics: [],
+    topicOptions: [],
     location: '',
+  }
+
+  componentWillMount() {
+    axios.get('/api/topics')
+      .then(res => res.data)
+      .then(topics => this.setState({ topicOptions: topics }));
   }
 
   handleNameChange = (e) => {
@@ -27,6 +35,10 @@ class RequestForm extends React.Component {
 
   handleLocationChange = (e) => {
     this.setState({ location: e.target.value });
+  }
+
+  handleTopicChange = (e) => {
+    this.setState({ topics: e.map(t => t.value) });
   }
 
   handleFormSubmit = (e) => {
@@ -41,7 +53,9 @@ class RequestForm extends React.Component {
   }
 
   render() {
-    const { name, topics, location } = this.state;
+    const {
+      name, topics, topicOptions, location,
+    } = this.state;
 
     return (
       <Box id="requestForm">
@@ -58,26 +72,19 @@ class RequestForm extends React.Component {
 
           <FormSection styles={{ marginTop: 0 }}>
 
-            <FieldTextStateless
-              label="My name is ..."
-              name="requesteeName"
-              onChange={this.handleNameChange}
-              placeholder="What should we call you?"
-              value={name}
-              isRequired
-              shouldFitContainer
-            />
+            <Field label="My name is...">
+              <FieldTextStateless
+                name="requesteeName"
+                onChange={this.handleNameChange}
+                placeholder="What should we call you?"
+                value={name}
+                isRequired
+                shouldFitContainer
+              />
+            </Field>
 
 
-            <FieldTextStateless
-              isRequired
-              shouldFitContainer
-              label="I need help with ..."
-              name="problemStatement"
-              placeholder="What do you need help with?"
-            />
-
-            <Field label="You can find me at ...">
+            <Field label="You can find me...">
               <FieldTextStateless
                 isRequired
                 shouldFitContainer
@@ -88,19 +95,18 @@ class RequestForm extends React.Component {
               />
             </Field>
 
-            {/* <Field label="Some related topics:">
-              <Select
+            <Field label="I need help with...">
+              <CreatableSelect
                 isSearchable
-                defaultValue={{ label: 'Atlassian', value: 'atlassian' }}
-                options={[
-                  { label: 'Atlassian', value: 'atlassian' },
-                  { label: 'Sean Curtis', value: 'scurtis' },
-                  { label: 'Mike Gardiner', value: 'mg' },
-                  { label: 'Charles Lee', value: 'clee' },
-                ]}
+                isClearable
+                isMulti
+                isRequired
+                placeholder="Type to search topics"
+                onChange={this.handleTopicChange}
+                options={topicOptions.map(o => ({ label: o, value: o }))}
                 name="owner"
               />
-            </Field> */}
+            </Field>
 
           </FormSection>
 

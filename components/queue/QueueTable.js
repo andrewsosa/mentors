@@ -5,6 +5,7 @@ import axios from 'axios';
 import { connect } from 'redux-zero/react';
 import { Table } from 'bloomer';
 import { actions } from 'store/tickets';
+import { ticketStatus } from '../../backend/models/lib';
 import './QueueTable.sass';
 
 class QueueTable extends React.Component {
@@ -26,6 +27,8 @@ class QueueTable extends React.Component {
 
   render() {
     const { tickets } = this.props;
+    const renderTag = topic => <span className="tag">{topic}</span>;
+    const renderStatus = status => <span className="tag">{status}</span>;
 
     return (
       <div id="queueTable">
@@ -42,9 +45,13 @@ class QueueTable extends React.Component {
             {
               tickets.map(t => (
                 <tr key={t._id}>
-                  <td>[ status ]</td>
+                  <td>{renderStatus(t.status)}</td>
                   <td>{t.name}</td>
-                  <td>{t.problemStatement}</td>
+                  <td>
+                    <div className="tags">
+                      {t.topics.map(renderTag)}
+                    </div>
+                  </td>
                   <td>{moment(t.created).fromNow()}</td>
                 </tr>
               ))
