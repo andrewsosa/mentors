@@ -17,10 +17,10 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 'off',
     'react/prefer-stateless-function': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: true, packageDir: path.join(__dirname, './') },
-    ],
+    // 'import/no-extraneous-dependencies': [
+    //   'error',
+    //   { devDependencies: true, packageDir: './' },
+    // ],
   },
   settings: {
     'import/resolver': {
