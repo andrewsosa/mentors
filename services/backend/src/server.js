@@ -1,14 +1,19 @@
-require('dotenv').config();
+// require('dotenv').config();
 
-const { app, server } = require('./app');
+const path = require('path');
+const { ApolloServer, gql } = require('apollo-server');
+const { importSchema } = require('graphql-import');
+const mongoose = require('mongoose');
 
-app
-  .connect()
-  .then(() => {
-    const port = process.env.PORT || 3000;
-    server.listen(port, err => {
-      if (err) throw err;
-      console.log(`Listening on port ${port}...`);
-    });
-  })
-  .catch(console.error.bind(console, 'connection error:'));
+mongoose.Promise = Promise;
+
+const typeDefs = importSchema(path.join(__dirname, './schema.graphql'));
+const resolvers = require('./resolvers');
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.connect = async () => {
+  return mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+};
+
+module.exports = server;

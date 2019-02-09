@@ -1,0 +1,29 @@
+scalar Date
+
+enum TicketStatus {
+  OPEN
+  INPROGESS
+  SOLVED
+}
+
+type Topic {
+  name: String!
+}
+
+type Ticket {
+  name: String
+  created: Date
+  location: String
+  status: TicketStatus
+  topics: [Topic]
+}
+
+# type Tag {
+#   id: Int
+#   content: String
+# }
+
+type Query {
+  tickets: [Ticket]
+  # tags: [Tag]
+}
