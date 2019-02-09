@@ -1,0 +1,33 @@
+scalar Date
+
+type User {
+  _id: String
+  name: String
+  karma: Int
+}
+
+type Topic {
+  _id: String
+  name: String
+}
+
+type Ticket {
+  _id: String
+  name: String @deprecated
+  author: User
+  created: Date
+  location: String
+  status: String
+  topics: [String]
+}
+
+type Query {
+  tickets(status: String = "Open", topics: String): [Ticket]
+  ticket(_id: String): Ticket
+  topics: [Topic]
+  # topic(name: String): [Ticket]
+}
+
+type Mutation {
+  createTicket(name: String!, location: String!, topics: [String!]!): Ticket
+}
